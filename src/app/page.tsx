@@ -4,6 +4,7 @@ import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { SignInButton } from "./components/sign-in-button";
 import { auth } from "@/auth";
+import { SignOutButton } from "./components/sign-out-button";
 
 // Define a type for the session user to ensure type safety (if using TypeScript)
 interface UserSession {
@@ -28,11 +29,15 @@ export default async function Home() {
           </h1>
           <p className="text-lg text-gray-600 mb-2">
             User signed in with name:{" "}
-            <span className="font-semibold">{session.user.name ?? "Unknown"}</span>
+            <span className="font-semibold">
+              {session.user.name ?? "Unknown"}
+            </span>
           </p>
           <p className="text-lg text-gray-600 mb-4">
             User signed in with email:{" "}
-            <span className="font-semibold">{session.user.email ?? "Unknown"}</span>
+            <span className="font-semibold">
+              {session.user.email ?? "Unknown"}
+            </span>
           </p>
 
           {/* Display user avatar if available */}
@@ -47,6 +52,9 @@ export default async function Home() {
               />
             </div>
           )}
+        </div>
+        <div className="mt-8">
+        <SignOutButton />
         </div>
       </div>
     );
